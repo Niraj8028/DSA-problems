@@ -2,7 +2,7 @@
 using namespace std;
 
 void toposort(vector<int>adj[],int n){
-    
+    <
 }
 int main(){
     
