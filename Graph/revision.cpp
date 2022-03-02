@@ -1,61 +1,45 @@
-I learned a lot from this channel and his explaination is  always on the point👍.Below is the code for solving above discussed problem:
-
-#include<bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
-int dijkstra(int V,vector<vector<int>> adj[],int S,int dest)
-{
-    set<pair<int, int>> shortestNode;
-    	vector<int> shortestDistance(V, INT_MAX);
-                                           //{wt,src}
-    	shortestNode.insert({0, S});
-    	shortestDistance[S] = 0;
-    
-    	while(!shortestNode.empty()){
-    		auto itr = shortestNode.begin();
-    		int src = itr->second; //src 
-    		int distance = itr->first;//wt
-    
-    		shortestNode.erase(itr); //remove first pair from set
-    
-    		for(auto u:adj[src]){
-    			int adjNode = u[0];
-    			int dist = u[1];
-    
-    			if(shortestDistance[adjNode] > shortestDistance[src] + dist){
-    				shortestDistance[adjNode] = shortestDistance[src] + dist;
-    				shortestNode.insert({shortestDistance[adjNode], adjNode});
-    			}
-    		}
-    	}
-    	
-    	return shortestDistance[dest];
+
+
+bool isPath(vector<node>edges,int node,int k,int e,vector<int>&vis){
+    vis[node]=1;
+    if(k<=0){
+        return true;
     }
+    for(auto it: adj[node]){
+        int u=it.first;
+        int v=it.second;
+        if(!vis[u]){
+            if(isPath(edges,u,k-v,e,vis)){
+                return true;
+            }
+        }
+    }
+    vis[node]=0;
+    return false;
 
- 
+}
 int main(){
-    int V,E;
-    cin>>V>>E;
-
-    vector<vector<int>> adj[V];
-    int count=0;
-    while(count++<E)
-    {
-        int u,v;
-        cin>>u>>v;
-        vector<int>t1,t2;
-        t1.push_back(v);
-        t1.push_back(0);
-        adj[u].push_back(t1);
-        t2.push_back(u);
-        t2.push_back(1);
-        adj[v].push_back(t2);
-   }
-   int src,dest;
-   cout<<"source:";
-   cin>>src;
-   cout<<"destination:";
-   cin>>dest;
-   int res=dijkstra(V,adj,src,dest);
-   cout<<"result="<<res;
-return 0;
+    int e;
+    cin>>e;
+    int n;
+    cin>>n;
+    vector<pair<int,int>>adj[n];
+    int k=25;
+    vector<int>vis(n,0);
+    for(int i=0; i<e; i++){
+        int u,v,w;
+        adj[u].push_back({v,w});
+        
+    }
+    int src=0;
+    if(isPath(edges,src,k,e,vis)){
+        cout<<"The path exists";
+    }
+    else{
+        cout<<"path does not exist";
+    }
+    return 0;
 }
