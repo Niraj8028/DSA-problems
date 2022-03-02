@@ -1,45 +1,39 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
-
-bool isPath(vector<node>edges,int node,int k,int e,vector<int>&vis){
-    vis[node]=1;
-    if(k<=0){
-        return true;
-    }
-    for(auto it: adj[node]){
-        int u=it.first;
-        int v=it.second;
-        if(!vis[u]){
-            if(isPath(edges,u,k-v,e,vis)){
-                return true;
+void WaterJug(int x,int y,int z){
+    vector<int>vis(x+y,0);
+    queue<int>q;
+    q.push(0);
+    vis[0]=1;
+    int dir[]={x,-x,y,-y};
+    while(!q.empty()){
+        int t=q.front();
+        vis[t]=1;
+        q.pop();
+        if(t==z){
+            return;
+        }
+        for(int i=0; i<4;i++){
+            int water=t+dir[i];
+            if(water<=0 || water>=x+y){
+                continue;
+            }
+            if(water==z){
+                return;
+            }
+            if(!vis[water]){
+                q.push(water);
+                vis[water]=1;
             }
         }
-    }
-    vis[node]=0;
-    return false;
 
+
+    }
 }
 int main(){
-    int e;
-    cin>>e;
-    int n;
-    cin>>n;
-    vector<pair<int,int>>adj[n];
-    int k=25;
-    vector<int>vis(n,0);
-    for(int i=0; i<e; i++){
-        int u,v,w;
-        adj[u].push_back({v,w});
-        
-    }
-    int src=0;
-    if(isPath(edges,src,k,e,vis)){
-        cout<<"The path exists";
-    }
-    else{
-        cout<<"path does not exist";
-    }
+    
     return 0;
 }
