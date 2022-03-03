@@ -3,57 +3,31 @@
 using namespace std;
 #define vi vector<int>
 #define pii vector<pair<int,int>>
-vi indegree;
-vi outdegree;
-void Dfs(vi adj[],node,vi &vis,int timer){
-    vis[node]=1;
-    indegree[node]=timer++;
-    for(auto it: adj[node]){
-        if(!vis[it]){
-            dfs(adj,it,vis,timer);
-        }
-    }
-    outdegree[node]=timer++;
-}
-
-bool check(int x,int y){
-    if(indegree[y]>indegree[x] && outdegree[x]>outdegree[y]){
-        return true;
-    }
-}
-
 int main(){
-    int v,e;
-    vector<vector<int>>adj(v);
-    for(int i=0; i<e; i++){
-        int x,y;
-        cin>>x>>y;
-        adj[x].push_back(y);
-        adj[y].push_back(x);
-    }
-    dfs(0,timer,adj);
-    int q;
-    cin>>q;
-    for(int i=0; i<q; i++){
-        int type,x,y;
-        cin>>type>>x>>y;
-        if(!check(x,y) && !(check(y,x))){
-            cout<<"NO";
-            continue;
-        }
-        if(type==0){
-            if(check(y,x)){
-                cout<<"yes";
-            }
-            cout<<"no";
-        }
-        else if(type==1){
-            if(check(x,y)){
-                cout<<"yes";
+    // int n,V;
+    // cin>>V>>n;
+    // vector<vector<int>>edges={{1,2,1},{3,2,2},{4,2,3},{2,5,5}};
+    // // for(int i=0; i<n; i++){
+    // //     int u, v, w;
+    // //     cin>>u>>v>>w;
 
-            }
-            cout<<"no";
-        }
-    }  
+    // // }
+    // for(int i=0; i<V; i++){
+    //     for(int j=0; j<edges[0].size(); j++){
+    //         cout<<edges[i][j]<<" ";
+    //     }
+    //     cout<<""<<endl;
+    // }
+    int V=1;
+    vector<pair<int,int>>adj[V];
+    // for(int i=0; i<n; i++){
+    //     for(int j=0; j<edges[0].size(); j++){
+    //         adj[0].push_back(edges[i][1]);
+    //     }
+    // }
+    adj[0].push_back({1,1});
+    pii x=adj[0][1];
+    // int u=x.first;
+    cout<<x;
     return 0;
-}
+} 
