@@ -3,7 +3,7 @@ using namespace std;
 #define vi vector<int>
 #define pii vector<pair<int,int>>
 
-int LCS(string x,string y){
+int lcs(string x,string y){
     int m=x.length();
     int n=y.length();
     int dp[m][n];
@@ -24,23 +24,25 @@ int LCS(string x,string y){
             }
         }
     }
-    for(int i=1; i<=m; i++){
-        for(int j=1; j<=n; j++){
-            cout<<dp[i][j]<<" ";
-            
-        }
-        cout<<endl;
-    }
+    
 
         
     return dp[m][n];
 }
+int minDist(string x,string y){
+    int m=x.length();
+    int n=y.length();
+    int LCS=lcs(x,y);
+    int a=m-LCS;
+    int b=n-LCS;
+    return a+b;
+}
 
 int main(){
-    string x="ecfbefdcfca";
-    string y="badfcbebbf";
+    string x="abce";
+    string y="bcd";
 
-    cout<<LCS(x,y);
+    cout<<minDist(x,y);
     
     return 0;
 }
