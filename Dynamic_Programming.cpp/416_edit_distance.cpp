@@ -39,10 +39,10 @@ int minDist(string x,string y){
 }
 
 int main(){
-    string x="abce";
-    string y="bcd";
+    string x="ecfbefdcfca";
+    string y="badfcbebbf";
 
-    cout<<minDist(x,y);
+    cout<<lcs(x,y);
     
     return 0;
 }
