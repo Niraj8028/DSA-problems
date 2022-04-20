@@ -3,34 +3,24 @@ using namespace std;
 #define vi vector<int>
 #define pii vector<pair<int,int>>
 
-int maxGold(int n, int m, vector<vector<int>> arr)
-    {
-        for(int col=m-2; col>=0; col--){
-            for(int row=0; row<n; row++){
-                if(col==m-1){
-                    arr[row][col]=arr[row][col];
-                }
-                else if(row==0){
-                    arr[row][col]+=max(arr[row][col+1],arr[row+1][col+1]);
-                }
-                else if(row=n-1){
-                    arr[row][col]+=max(arr[row][col+1],arr[row-1][col+1]);
-                }
-                else{
-                    arr[row][col]+=max(arr[row+1][col+1],max(arr[row][col+1],arr[row-1][col+1]));
-                }
-            }
-            
-        }
-        int res=0;
-        for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-                cout<<arr[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-        return res;
-    }
+    int maxGold(int n, int m, vector<vector<int>> M)
+   {
+       
+       for(int i=m-2;i>=0;i--){
+           for(int j=0;j<n;j++){
+               int right=M[j][i+1];
+               int up=(j==0)? 0:M[j-1][i+1];
+               int down=(j==n-1)? 0:M[j+1][i+1];
+               M[j][i]=M[j][i]+max(up, max(right,down));
+           }
+       }
+      
+       int res=M[0][0];
+       for(int i=1;i<n;i++){
+           res=max(res,M[i][0]);
+       }
+       return res;
+   }
 
 int main(){
     int m=4;
