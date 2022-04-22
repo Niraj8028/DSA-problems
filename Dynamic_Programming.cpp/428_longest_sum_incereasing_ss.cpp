@@ -23,7 +23,7 @@ int maxSumIS(int arr[], int n)
     for (int i = 0; i < n; i++)
     {
         cout<<sum[i]<<" ";
-        // maxi = max(maxi, sum[i]);
+        
     }
     return maxi;
 }
