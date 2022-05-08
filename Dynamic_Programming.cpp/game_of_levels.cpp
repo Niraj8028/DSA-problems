@@ -14,7 +14,18 @@ int helper(int h,int m,int count,bool flag){
                 }
                 else{
                     count++;
-                    count=max(helper(h-5,m-10,count,true),helper(h-20,m+5,count,true));
+                    flag=true;
+                    if(h>5 && m>10){
+                        count=helper(h-5,m-10,count,true);
+                    }
+                    else if(h>20){
+                        count=helper(h-20,m+5,count,true);
+                    }
+                    
+                    else{
+                        count--;
+                        return count;
+                    }
                     
                 }
             }
