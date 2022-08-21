@@ -17,8 +17,7 @@ int main(){
         if(arr[j]-arr[i]==k){
             cout<<i+1<<" "<<j;
             j++;      
-        }
-        
+        }       
     }
     return 0;
 }
