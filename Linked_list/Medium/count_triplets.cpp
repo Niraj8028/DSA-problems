@@ -54,24 +54,27 @@ int main()
 
 int countTriplets(struct Node* head, int x) 
 { 
-    // code here.
     unordered_map<int,int>mp;
     Node*temp=head;
     int cnt=0;
-    int sum=x;
+    
     while(temp->next!=NULL){
-        sum=sum-temp->data;
+        
         Node*node=temp->next;
         while(node!=NULL){
-            if(mp.find(sum-node->data)!=mp.end()){
+            if(mp.find(x-node->data-temp->data)!=mp.end()){
                 cnt++;
+                node=node->next;
+            }
+            else{
+                mp[node->data]++;
+                node=node->next;
                 
             }
             
-            node=node->next;
         }
-        mp[temp->data]++;
+        mp.clear();
         temp=temp->next;
     }
     return cnt;
-} 
+}  
