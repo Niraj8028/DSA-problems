@@ -36,14 +36,15 @@ class Solution {
 
 //{ Driver Code Starts.
 int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int l, r;
-        cin>>l>>r;
-        Solution ob;
-        cout<<ob.sumOfAll(l,r)<<endl;
+    char temp;
+    cin>>temp;
+    if(temp>='a' && temp<='z'){
+        temp=temp-32;
     }
+    else if(temp>='A' && temp<='Z'){
+        temp=temp+32;
+    }
+    cout<<temp;
     return 0;
 }
 
