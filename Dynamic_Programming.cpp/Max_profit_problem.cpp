@@ -39,18 +39,7 @@ int solve(int time[3],int profit[3],int n,vector<int>&x){
 }
 
 int main(){
-    int time[3]={5,4,10};
-    int profit[3]={1500,1000,3000};
-    int n;
-    cout<<"Please Enter Time :";
-    cin>>n;
-    if(n<=4){
-        cout<<"0";
-    }
-    vector<int>x(3,0);
-    int ans= solve(time,profit,n,x);
-    cout<<"Profit "<<ans<<endl;
-    cout<<"T:"<<x[0]<<"P:"<<x[1]<<"C:"<<x[2];
+    int x[]={}
     
     return 0;
 }

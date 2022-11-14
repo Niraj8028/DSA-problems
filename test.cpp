@@ -3,34 +3,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Function to return maximum absolute
-// difference in linear time.
-int maxDistance(int arr[], int n)
-{
-	// max and min variables as described
-	// in algorithm.
-	int max1 = INT_MIN, min1 = INT_MAX;
-	int max2 = INT_MIN, min2 = INT_MAX;
 
-	for (int i = 0; i < n; i++) {
-
-		// Updating max and min variables
-		// as described in algorithm.
-		max1 = max(max1, arr[i] + i);
-		min1 = min(min1, arr[i] + i);
-		max2 = max(max2, arr[i] - i);
-		min2 = min(min2, arr[i] - i);
+int frequencyOfNumber(string s){
+	map<int>mp;
+	int count=0;
+	for(int i=0; i<s.length(); i++){
+		if(s[i]>=0 && s[i]<=9){
+			mp[s[i]-'0']++;
+		}
+		else{
+			count++;
+		}
 	}
-
-	// Calculating maximum absolute difference.
-	return max(max1 - min1, max2 - min2);
+	for(auto it:mp){
+		cout<<it.first<<":"<<it.second;
+	}
+	cout<<ans<<"count";
 }
 
-// Driver program to test the above function.
 int main()
 {
-	int arr[] = {5,6,5,2,1,7,9,7,2,5};
-	int n = sizeof(arr) / sizeof(arr[0]);
-	cout << maxDistance(arr, n) << endl;
+	string string="raja";
+	Set<Integer> s = new HashSet<Integer>();
+	s.add('a');
+	s.add('e');
+	s.add('i');
+	s.add('o');
+	s.add('u');
+	int count=0;
+	for(int i=0; i<s.size(); i++){
+		if(s.contains(string[i])){
+			count++;
+		}
+	}
+	if(count%2==0){
+		cout<< "false";
+	}
+	else{
+		cout<<"true";
+	}
+	
+
 	return 0;
 }
