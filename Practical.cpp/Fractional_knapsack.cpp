@@ -2,7 +2,6 @@ class Solution
 {
     public:
     #define pii pair<double,int>
-    //Function to get the maximum total value in the knapsack.
     double fractionalKnapsack(int W, Item arr[], int n)
     {
         vector<pii>ans;
